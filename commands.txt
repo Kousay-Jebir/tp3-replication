@@ -1,0 +1,9 @@
+#Compilation
+$files = Get-ChildItem -Path src -Recurse -Filter *.java | Select-Object -ExpandProperty FullName
+javac -cp "lib\*" -d bin $files
+
+#Lancement des réplicas
+java -cp "bin;lib\*" replica.Replica [replica_id] [folder]
+
+#Lancement Reader/Writer
+java -cp "bin;lib\*" reader.ClientReader

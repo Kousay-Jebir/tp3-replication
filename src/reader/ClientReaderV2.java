@@ -11,7 +11,7 @@ import java.util.concurrent.*;
 public class ClientReaderV2 {
 
     private static final int REPLICA_COUNT = 3;
-    private static final int LINES_PER_REPLICA = 7; // or however many each replica sends
+    // or however many each replica sends
 
     public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
         ConnectionFactory factory = new ConnectionFactory();
@@ -47,13 +47,18 @@ public class ClientReaderV2 {
             }, tag -> {});
 
             // Wait to receive REPLICA_COUNT * LINES_PER_REPLICA lines
-            int expectedLines = REPLICA_COUNT * LINES_PER_REPLICA;
-            List<String> allLines = new ArrayList<>();
+            
+            
             int waitMs = 5000;
             long start = System.currentTimeMillis();
-            while (allLines.size() < expectedLines && System.currentTimeMillis() - start < waitMs) {
+            List<String> allLines = new ArrayList<>();
+
+            while (System.currentTimeMillis() - start < waitMs) {
                 String line = lineQueue.poll(500, TimeUnit.MILLISECONDS);
-                if (line != null) allLines.add(line);
+                if (line != null) {
+                    allLines.add(line);
+                    start = System.currentTimeMillis(); // reset timeout if new line arrives
+                }
             }
 
             channel.basicCancel(consumerTag);

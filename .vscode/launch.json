@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "ClientReader",
+      "request": "launch",
+      "mainClass": "reader.ClientReader",
+      "projectName": "tp3-replication_6fb2d858"
+    },
+    {
+      "type": "java",
+      "name": "ClientReaderV2",
+      "request": "launch",
+      "mainClass": "reader.ClientReaderV2",
+      "projectName": "tp3-replication_6fb2d858"
+    },
+    {
+      "type": "java",
+      "name": "ClientWriter",
+      "request": "launch",
+      "mainClass": "writer.ClientWriter",
+      "projectName": "tp3-replication_6fb2d858"
+    },
+    {
+      "type": "java",
+      "name": "Replica",
+      "request": "launch",
+      "mainClass": "replica.Replica",
+      "projectName": "tp3-replication_6fb2d858",
+      "args": "2 replica2"
+    }
+  ]
+}

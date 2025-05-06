@@ -4,7 +4,6 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import common.constants.Constants;
 import common.messaging.Message;
